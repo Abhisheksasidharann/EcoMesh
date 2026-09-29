@@ -177,6 +177,7 @@ def run_pipeline():
             "trust_score": out["trust_score"],
             "verification_reasons": out["reasons"],
             "photo_hash": out["photo_hash"],
+            "ai_check": out.get("ai_check"),
             "verified_at": datetime.now(timezone.utc),
         }
         if "impact_kg_co2e" in out:
@@ -277,3 +278,4 @@ def get_student(student_id: str):
         raise HTTPException(status_code=404, detail="No activity yet for this student")
     p["student_id"] = p.pop("_id")
     return p
+
